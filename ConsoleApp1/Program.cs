@@ -72,9 +72,18 @@ List<string> bandas =  new List<string>();
     Exibir_Menu();
 }
 
-static void Mostrar_Bandas()
+void Mostrar_Bandas()
 {
+    Console.Clear();
     Console.WriteLine("As bandas cadastradas são:");
+    for (int i = 0; i < bandas.Count; i++)
+    {
+        Console.WriteLine($"- {bandas[i]}");
+    }
+    Console.WriteLine("Digite qualquer tecla para retornar ao menu");
+    Console.ReadKey();
+    Console.Clear();
+    Exibir_Menu();
 }
 
 static void Avaliar_Bandas()
