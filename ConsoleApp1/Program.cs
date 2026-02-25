@@ -4,7 +4,9 @@
     Console.WriteLine(fil);
 }
 
-List<string> bandas =  new List<string>();
+//List<string> bandas =  new List<string>();
+
+Dictionary<string, List<int>> bandas = new Dictionary<string, List<int>>;
 
  void boas_Vindas()
 {
@@ -24,6 +26,19 @@ List<string> bandas =  new List<string>();
 ██████╔╝╚█████╔╝██║░░██║███████╗███████╗██║░╚███║  ██████╔╝╚█████╔╝╚██████╔╝██║░╚███║██████╔╝
 ╚═════╝░░╚════╝░╚═╝░░╚═╝╚══════╝╚══════╝╚═╝░░╚══╝  ╚═════╝░░╚════╝░░╚═════╝░╚═╝░░╚══╝╚═════╝░";
     Console.WriteLine(mensagem);
+}
+
+void exibir_titulo(string titulo)
+{
+    for(int i = 0; i < titulo.Length; i++)
+    {
+        Console.Write("*");
+    }
+    Console.WriteLine(titulo);
+    int qtd = titulo.Length;
+    string asteriscos = string.Empty.PadLeft(qtd, '*');
+    Console.WriteLine(asteriscos + '\n');
+
 }
 
  void Exibir_Menu()
@@ -63,6 +78,8 @@ List<string> bandas =  new List<string>();
 
  void Registrar_Banda()
 {
+    Console.Clear();
+    exibir_titulo("Registro de Banda");
     Console.Write("Digite o nome da banda:");
     string nome_banda = Console.ReadLine()!;
     bandas.Add(nome_banda);
@@ -75,12 +92,14 @@ List<string> bandas =  new List<string>();
 void Mostrar_Bandas()
 {
     Console.Clear();
+    exibir_titulo("Listar Bandas");
     Console.WriteLine("As bandas cadastradas são:");
     Console.WriteLine("Bandas com for");
     for (int i = 0; i < bandas.Count; i++)
     {
         Console.WriteLine($"- {bandas[i]}");
     }
+    Console.WriteLine();
     Console.WriteLine("Bandas com foreach");
     foreach(string banda in bandas)
     {
