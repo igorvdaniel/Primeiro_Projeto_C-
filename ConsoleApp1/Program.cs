@@ -55,7 +55,7 @@ void exibir_titulo(string titulo)
  void Exibir_Menu()
 {
     boas_Vindas();
-    Console.WriteLine("\n1 - registrar banda \n2 - mostrar todas as bandas \n3 - avaliar uma banda \n4 - exibir a avalição média de uma banda \n0 - Sair\n");
+    Console.WriteLine("\n1 - registrar banda \n2 - mostrar todas as bandas \n3 - avaliar uma banda \n4 - exibir a avalições médias \n0 - Sair\n");
     Console.Write("Digite o número da sua ação:");
     string opcao_escolhida = Console.ReadLine()!; //O ! faz não receber nulo
     int opcao = int.Parse(opcao_escolhida);
@@ -153,11 +153,15 @@ void Avaliar_Bandas()
 
 void Consultar_Banda()
 {
-    exibir_titulo("Avalição Media");
+    exibir_titulo("Avaliação Media");
     Console.WriteLine("Bandas Cadastradas: ");
-    foreach(strbanda in bandas.Keys)
+    foreach(string banda in bandas.Keys)
     {
-        
+        Console.WriteLine($"{banda}: {bandas[banda].Average()}");
+        Console.WriteLine("Digite qualquer tecla para retornar ao menu");
+        Console.ReadKey();
+        Console.Clear();
+        Exibir_Menu();        
     }
 }
 
