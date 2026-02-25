@@ -67,7 +67,7 @@ List<string> bandas =  new List<string>();
     string nome_banda = Console.ReadLine()!;
     bandas.Add(nome_banda);
     Console.WriteLine($"A banda {nome_banda} foi registrada!");
-    Thread.Sleep(2000);
+    Thread.Sleep(1000);
     Console.Clear();
     Exibir_Menu();
 }
@@ -76,10 +76,17 @@ void Mostrar_Bandas()
 {
     Console.Clear();
     Console.WriteLine("As bandas cadastradas são:");
+    Console.WriteLine("Bandas com for");
     for (int i = 0; i < bandas.Count; i++)
     {
         Console.WriteLine($"- {bandas[i]}");
     }
+    Console.WriteLine("Bandas com foreach");
+    foreach(string banda in bandas)
+    {
+        Console.WriteLine($"- {banda}"); 
+    }
+
     Console.WriteLine("Digite qualquer tecla para retornar ao menu");
     Console.ReadKey();
     Console.Clear();
