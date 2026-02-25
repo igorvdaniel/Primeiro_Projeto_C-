@@ -6,8 +6,18 @@
 
 //List<string> bandas =  new List<string>();
 
-Dictionary<string, List<int>> bandas = new Dictionary<string, List<int>>;
+Dictionary<string, List<int>> bandas = new Dictionary<string, List<int>>();
 
+bandas.Add("Linkin Park", new List<int>() {10, 1, 3});
+bandas.Add("Green Day", new List<int>());
+
+void exibir_bandas()
+{
+    foreach(string banda in bandas.Keys)
+    {
+        Console.WriteLine($"- {banda}"); 
+    }    
+}
  void boas_Vindas()
 {
     //O @ faz a string aparecer literal igual ao console
@@ -34,6 +44,7 @@ void exibir_titulo(string titulo)
     {
         Console.Write("*");
     }
+    Console.WriteLine();
     Console.WriteLine(titulo);
     int qtd = titulo.Length;
     string asteriscos = string.Empty.PadLeft(qtd, '*');
@@ -82,7 +93,7 @@ void exibir_titulo(string titulo)
     exibir_titulo("Registro de Banda");
     Console.Write("Digite o nome da banda:");
     string nome_banda = Console.ReadLine()!;
-    bandas.Add(nome_banda);
+    bandas.Add(nome_banda, new List<int>());
     Console.WriteLine($"A banda {nome_banda} foi registrada!");
     Thread.Sleep(1000);
     Console.Clear();
@@ -97,11 +108,11 @@ void Mostrar_Bandas()
     Console.WriteLine("Bandas com for");
     for (int i = 0; i < bandas.Count; i++)
     {
-        Console.WriteLine($"- {bandas[i]}");
+        Console.WriteLine($"- {bandas.ElementAt(i).Key}");
     }
     Console.WriteLine();
     Console.WriteLine("Bandas com foreach");
-    foreach(string banda in bandas)
+    foreach(string banda in bandas.Keys)
     {
         Console.WriteLine($"- {banda}"); 
     }
@@ -111,15 +122,43 @@ void Mostrar_Bandas()
     Console.Clear();
     Exibir_Menu();
 }
-
-static void Avaliar_Bandas()
+void Avaliar_Bandas()
 {
+    Console.Clear();
+    exibir_titulo("Avaliar Bandas");
+    Console.WriteLine("Bandas Cadastradas:");
+    exibir_bandas();
+    Console.Write("Digite o nome da banda que deseja avaliar: ");
+    string nome_banda = Console.ReadLine()!;
+    if(bandas.ContainsKey(nome_banda))
+    {
+        Console.WriteLine($"Digite o valor da avaliação da banda {nome_banda}: ");
+        int nota = int.Parse(Console.ReadLine()!);
+        bandas[nome_banda].Add(nota);
+        Console.WriteLine($"A nota {nota} foi registrada para {nome_banda}");
+        Thread.Sleep(1000);
+        Console.Clear();
+        Exibir_Menu();
 
+    }
+    else
+    {
+        Console.WriteLine($"A banda {nome_banda} não existe!");
+        Thread.Sleep(1000);
+        Console.Clear();
+        Exibir_Menu();
+    }
+    
 }
 
-static void Consultar_Banda()
+void Consultar_Banda()
 {
-
+    exibir_titulo("Avalição Media");
+    Console.WriteLine("Bandas Cadastradas: ");
+    foreach(strbanda in bandas.Keys)
+    {
+        
+    }
 }
 
 void Main()
